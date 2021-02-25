@@ -1,4 +1,4 @@
-package com.chess.boardgame;
+package com.chess.Exceptions;
 
 public class BoardException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

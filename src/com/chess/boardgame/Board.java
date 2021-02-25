@@ -1,5 +1,7 @@
 package com.chess.boardgame;
 
+import com.chess.Exceptions.BoardException;
+
 public class Board {
 
 	private Integer rows;
@@ -67,7 +69,7 @@ public class Board {
 	
 	//metodo para ver se ja existe uma peça
 	public boolean thereIsAPiece(Position position) {
-		if (thereIsAPiece(position)) {
+		if (!positionExists(position)) {
 			throw new BoardException("There is already a piece on position " + position);
 		}
 		return piece(position) != null;
