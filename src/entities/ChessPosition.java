@@ -1,7 +1,7 @@
-package com.chess.entities;
+package entities;
 
-import com.chess.Exceptions.BoardException;
-import com.chess.boardgame.Position;
+import boardgame.Position;
+import exceptions.BoardException;
 
 public class ChessPosition {
 

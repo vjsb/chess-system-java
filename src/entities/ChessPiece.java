@@ -1,8 +1,8 @@
-package com.chess.entities;
+package entities;
 
-import com.chess.boardgame.Board;
-import com.chess.boardgame.Piece;
-import com.chess.enums.Color;
+import boardgame.Board;
+import boardgame.Piece;
+import enums.Color;
 
 public class ChessPiece extends Piece {
 

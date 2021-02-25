@@ -1,7 +1,7 @@
-package com.chess.application;
+package application;
 
-import com.chess.entities.ChessPiece;
-import com.chess.enums.Color;
+import entities.ChessPiece;
+import enums.Color;
 
 public class UI {
 

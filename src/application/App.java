@@ -1,6 +1,6 @@
-package com.chess.application;
+package application;
 
-import com.chess.entities.ChessMatch;
+import entities.ChessMatch;
 
 public class App {
 

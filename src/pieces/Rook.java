@@ -1,8 +1,8 @@
-package com.chess.pieces;
+package pieces;
 
-import com.chess.boardgame.Board;
-import com.chess.entities.ChessPiece;
-import com.chess.enums.Color;
+import boardgame.Board;
+import entities.ChessPiece;
+import enums.Color;
 
 //Torre
 public class Rook extends ChessPiece{

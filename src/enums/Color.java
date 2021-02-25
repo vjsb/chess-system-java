@@ -1,4 +1,4 @@
-package com.chess.enums;
+package enums;
 
 public enum Color {
 

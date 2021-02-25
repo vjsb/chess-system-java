@@ -1,9 +1,9 @@
-package com.chess.entities;
+package entities;
 
-import com.chess.boardgame.Board;
-import com.chess.enums.Color;
-import com.chess.pieces.King;
-import com.chess.pieces.Rook;
+import boardgame.Board;
+import enums.Color;
+import pieces.King;
+import pieces.Rook;
 
 public class ChessMatch {
 
