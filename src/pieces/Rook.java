@@ -17,4 +17,11 @@ public class Rook extends ChessPiece{
 		return "R";
 	}
 	
+	@Override
+	public boolean[][] possibleMoves() {
+		//por enquanto sempre que chamar o movimento de um rei retornara todas as posições como false, como se ele estivesse preso
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		return mat;
+	}
+	
 }
