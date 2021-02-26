@@ -1,7 +1,10 @@
 package entities;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
 import enums.Color;
+import exceptions.ChessException;
 import pieces.King;
 import pieces.Rook;
 
@@ -29,6 +32,33 @@ public class ChessMatch {
 			}
 		}
 		return mat;
+	}
+	
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		validateSourcePosition(source);
+		Piece capturedPiece = makeMove(source, target);
+		return (ChessPiece) capturedPiece;
+		
+	}
+	
+	//lógica de realizar o movimento
+	private Piece makeMove(Position source, Position target) {
+		
+		Piece p = board.removePiece(source);//remove a peça da posição de origem
+		Piece capturedPiece = board.removePiece(target);//remove uma possivel peça da posição de destino
+		board.placePiece(p, target);//coloca a peça que tava na origem na posição de destino
+		return capturedPiece;
+		
+	}
+	
+	//validação da posição de origem
+	private void validateSourcePosition(Position position) {
+		if (!board.thereIsAPiece(position)) {
+			throw new ChessException("Ther is no piece on source position");
+		}
 	}
 
 	// esse método ira receber as coordenadas do xadrez
