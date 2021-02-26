@@ -59,7 +59,20 @@ public class UI {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j]);
+				printPiece(pieces[i][j], false);//false para que nenhuma peça tenha fundo colorido
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+
+	}
+	
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+
+		for (int i = 0; i < pieces.length; i++) {
+			System.out.print((8 - i) + " ");
+			for (int j = 0; j < pieces.length; j++) {
+				printPiece(pieces[i][j], possibleMoves[i][j]);//ira pintar o fundo colorido dependendo da variavel possibleMoves
 			}
 			System.out.println();
 		}
@@ -68,7 +81,7 @@ public class UI {
 	}
 
 	// método para imprimir uma peça apenas
-	public static void printPiece(ChessPiece piece) {
+	public static void printPiece(ChessPiece piece, boolean background) {
 
 		/*
 		 * se essa pessa for igual a nulo significa que não tinha peça nessa posição do
@@ -77,8 +90,12 @@ public class UI {
 		 * testara para ver se as peças são brancas ou pretas
 		 * reproduzindo o branco e amarelo por conta do fundo ser preto
 		 */
+		if (background) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
+		
 		if (piece == null) {
-            System.out.print("-");
+            System.out.print("-" + ANSI_RESET);
         }
         else {
             if (piece.getColor() == Color.WHITE) {
