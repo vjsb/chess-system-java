@@ -37,8 +37,9 @@ public class ChessPosition {
 	}
 	
 	//esse método retorna a formula inversa de toPosition
+	//esse método pega a posição da matriz e converte para posição de xadrez
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	//no xadrez primeiro se posiciona a coluna e depois a linha
