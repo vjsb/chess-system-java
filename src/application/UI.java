@@ -14,8 +14,6 @@ import enums.Color;
 public class UI {
 
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-	//codigos especiais de cores para serem impressos no console
-	//cores do texto
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -26,7 +24,6 @@ public class UI {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	//cores do fundo
 	public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -36,7 +33,6 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
-	//limpa a tela do gitBash
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
@@ -47,17 +43,16 @@ public class UI {
 		
 		try {
 			
-			String s = sc.nextLine();//recebe uma String para posição coluna
-			char column = s.charAt(0);//charAt(0) por conta de apenas primeiro caractere definir a coluna
-			int row = Integer.parseInt(s.substring(1));//recortar o String a partir da posição 1 e transforma-lo em inteiro que é a linha
-			return new ChessPosition(column, row);//retornara o comando digitado por exemplo a1
+			String s = sc.nextLine();
+			char column = s.charAt(0);
+			int row = Integer.parseInt(s.substring(1));
+			return new ChessPosition(column, row);
 			
 		} catch (Exception e) {
 			throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
 		}
 	}
 
-	//printar informações da partida
 	public static void printMatch(ChessMatch chessMatch,List<ChessPiece> captured) {
 		
 		printBoard(chessMatch.getPieces());
@@ -78,13 +73,12 @@ public class UI {
 		
 	}
 	
-	// método para imprimir o tabuleiro
 	public static void printBoard(ChessPiece[][] pieces) {
 
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], false);//false para que nenhuma peça tenha fundo colorido
+				printPiece(pieces[i][j], false);
 			}
 			System.out.println();
 		}
@@ -97,7 +91,7 @@ public class UI {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], possibleMoves[i][j]);//ira pintar o fundo colorido dependendo da variavel possibleMoves
+				printPiece(pieces[i][j], possibleMoves[i][j]);
 			}
 			System.out.println();
 		}
@@ -105,16 +99,8 @@ public class UI {
 
 	}
 
-	// método para imprimir uma peça apenas
 	public static void printPiece(ChessPiece piece, boolean background) {
 
-		/*
-		 * se essa pessa for igual a nulo significa que não tinha peça nessa posição do
-		 * tabuleiro então vai imprimir um "-" caso contrario ira imprimir a peça
-		 * (piece) espaço em branco para que não fiquem grudadas umas nas outras
-		 * testara para ver se as peças são brancas ou pretas
-		 * reproduzindo o branco e amarelo por conta do fundo ser preto
-		 */
 		if (background) {
 			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
@@ -134,25 +120,18 @@ public class UI {
 	}
 	
 	private static void printCapturedPieces(List<ChessPiece> captured) {
-		//listas geradas a partir do List<ChessPiece> captured que é a lista do jogo todo
+		
 		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
 		System.out.println("Captured pieces: ");
 		System.out.print("White: ");
-		System.out.print(ANSI_WHITE);//para garantir que a lista seja impressa na cor branca
-		System.out.println(Arrays.toString(white.toArray())); //jeito padrão de imprimir arrays no java
-		System.out.print(ANSI_RESET);//reseta a cor
+		System.out.print(ANSI_WHITE);
+		System.out.println(Arrays.toString(white.toArray())); 
+		System.out.print(ANSI_RESET);
 		System.out.print("Black: ");
 		System.out.print(ANSI_YELLOW);
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
 		
 	}
-	
-	
-	
-	
-	
-	
-
 }

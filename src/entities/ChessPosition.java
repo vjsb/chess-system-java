@@ -26,30 +26,16 @@ public class ChessPosition {
 		return row;
 	}
 	
-	/*metodo vai retornar uma nova posição
-	 * 
-	 * a linha vai ser o 8 - a linha da posição do xadres
-	 * coluna vai ser a coluna do xadrez - o caractere 'a'
-	 * 
-	 */
 	protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
 	
-	//esse método retorna a formula inversa de toPosition
-	//esse método pega a posição da matriz e converte para posição de xadrez
 	protected static ChessPosition fromPosition(Position position) {
 		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
-	//no xadrez primeiro se posiciona a coluna e depois a linha
 	@Override
 	public String toString() {
 		return "" + column + row;
 	}
-	
-	
-	
-	
-	
 }

@@ -27,9 +27,6 @@ public class King extends ChessPiece {
 
 	}
 
-	// testar se nessa posição que eu informar existe uma torre e se esta apta para
-	// rook, se isso tudo acontecer esta apta
-	// esta apta para rook quando a quantidade de movimentos dela é igual a 0
 	public boolean testRookCastling(Position position) {
 
 		ChessPiece p = (ChessPiece) getBoard().piece(position);
@@ -39,15 +36,11 @@ public class King extends ChessPiece {
 
 	@Override
 	public boolean[][] possibleMoves() {
-		// por enquanto sempre que chamar o movimento de um rei retornara todas as
-		// posições como false, como se ele estivesse preso
+
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 
 		Position p = new Position(0, 0);
 
-		// esses +1 e -1 são os pontos de referencia do tabuleiro devido as suas
-		// matrizes
-		// posições parecidas com o plano cartesiano
 		// acima
 		p.setValues(position.getRow() - 1, position.getColumn());
 		if (getBoard().positionExists(p) && canMove(p)) {
@@ -103,7 +96,7 @@ public class King extends ChessPiece {
 			Position posT1 = new Position(position.getRow(), position.getColumn() + 3);
 			if (testRookCastling(posT1)) {
 				Position p1 = new Position(position.getRow(), position.getColumn() + 1);
-				Position p2 = new Position(position.getRow(), position.getColumn() + 2);//verifica as duas posições a direita do rei
+				Position p2 = new Position(position.getRow(), position.getColumn() + 2);
 				if (getBoard().piece(p1) == null && getBoard().piece(p2) == null) {
 					mat[position.getRow()][position.getColumn() + 2] = true;
 				}
@@ -118,7 +111,7 @@ public class King extends ChessPiece {
 			if (testRookCastling(posT2)) {
 				Position p1 = new Position(position.getRow(), position.getColumn() - 1);
 				Position p2 = new Position(position.getRow(), position.getColumn() - 2);
-				Position p3 = new Position(position.getRow(), position.getColumn() - 3);//verifica as tres posições a esquerda do rei
+				Position p3 = new Position(position.getRow(), position.getColumn() - 3);
 				if (getBoard().piece(p1) == null && getBoard().piece(p2) == null && getBoard().piece(p3) == null) {
 					mat[position.getRow()][position.getColumn() - 2] = true;
 				}

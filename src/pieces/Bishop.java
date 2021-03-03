@@ -20,10 +20,9 @@ public class Bishop extends ChessPiece{
 	
 	@Override
 	public boolean[][] possibleMoves() {
-		//por enquanto sempre que chamar o movimento de um rei retornara todas as posições como false, como se ele estivesse preso
+		
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 		
-		//variavel auxiliar
 		Position p = new Position(0, 0);
 		
 		//noroeste
@@ -32,7 +31,7 @@ public class Bishop extends ChessPiece{
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setValues(p.getRow() - 1, p.getColumn() - 1);;
 		}	
-		//se haver uma peça do oponente a frente tambem sera uma posição valida
+
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
